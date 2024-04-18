@@ -2,7 +2,7 @@
 
 A collection of automation tools that may be of use.
 
-## extract_notes_from_slides_cwd.py
+## 📝 extract_notes_from_slides_cwd.py
 
 Identifies all `.pptx` files in the current working directory, extracts all speaker notes separated by slide into a `.txt` file that begins with `[Notes]` and ends with the original file name, saved in the current working directory.
 
@@ -15,7 +15,7 @@ pip install python-pptx
 python3 extract_notes_from_slides_cwd.py
 ```
 
-## speech_length_gui.py
+## 🎙️ speech_length_gui.py
 
 This script creates a simple GUI application that allows users to paste or type text into a text box. As the text is entered, the application calculates and displays the number of words and estimates the time it would take to speak the text aloud at a rate of 130 words per minute. The calculation updates live, providing instant feedback as the user modifies the text. This can be particularly useful for preparing speeches, presentations, or determining the length of spoken segments.
 
