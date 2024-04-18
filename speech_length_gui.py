@@ -7,7 +7,12 @@ def update_info(event=None):
     minutes = words // 130
     seconds = int((words / 130 - minutes) * 60)
     word_count_label.config(text=f"Word Count: {words}")
-    time_label.config(text=f"Estimated Time: {minutes}:{seconds:02d}")
+    
+    # Temporarily make the entry widget editable to update the time
+    time_entry.configure(state='normal')  # Allow editing to update the text
+    time_entry.delete(0, tk.END)
+    time_entry.insert(0, f"{minutes}:{seconds:02d}")
+    time_entry.configure(state='readonly')  # Set back to read-only
 
 # Create the main window
 root = tk.Tk()
@@ -18,11 +23,15 @@ text_area = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=40, height=10)
 text_area.pack(padx=10, pady=10)
 text_area.bind("<KeyRelease>", update_info)
 
-# Labels for displaying the word count and time
+# Label for displaying the word count
 word_count_label = tk.Label(root, text="Word Count: 0")
 word_count_label.pack()
-time_label = tk.Label(root, text="Estimated Time: 0:00")
-time_label.pack()
+
+# Entry for displaying the estimated time, initially read-only
+time_entry = tk.Entry(root, justify='center', font=('Arial', 14), borderwidth=2, relief='groove', width=8)
+time_entry.pack(pady=(5, 20))
+time_entry.insert(0, "0:00")
+time_entry.configure(state='readonly')  # Set to read-only
 
 # Run the application
 root.mainloop()
